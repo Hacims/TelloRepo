@@ -23,8 +23,8 @@ locaddr = (host,port)
 # Create a UDP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-tello_address0 = ('192.168.0.36', 8889) # DC8
-tello_address1 = ('192.168.0.38', 8889) # FDC
+#tello_address0 = ('192.168.0.36', 8889) # DC8
+tello_address1 = ('192.168.10.1', 8889) # FDC
 sock.bind(locaddr)
 
 def recv():
@@ -57,14 +57,14 @@ print ('end -- quit demo.\r\n')
 #recvThread create
 #recvThread = threading.Thread(target=recv)
 #recvThread.start()
-file_name = 'Command FDC.txt'
+file_name = 'CommandFDC.txt'
 f = open(file_name, "r")
 CommandsFDC = f.readlines()
 FDC_len = len(CommandsFDC)
-file_name = 'Command DC8.txt'
-f = open(file_name, "r")
-CommandsDC8 = f.readlines()
-DC8_len = len(CommandsDC8)
+##file_name = 'Command DC8.txt'
+##f = open(file_name, "r")
+##CommandsDC8 = f.readlines()
+##DC8_len = len(CommandsDC8)
 if DC8_len >= FDC_len:
     longest = DC8_len
 else:
