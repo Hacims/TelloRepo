@@ -1,0 +1,16 @@
+command
+takeoff
+forward 100
+cw 90
+forward 15
+cw 90
+forward 100
+ccw 90
+forward 15
+ccw 90
+forward 100
+cw 90
+forward 15
+cw 90
+forward 100
+land
