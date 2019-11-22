@@ -2,6 +2,8 @@ import socket
 import threading
 import time
 import cv2
+import datetime
+import os
 from stats import Stats
 
 
@@ -69,6 +71,15 @@ class Tello:
         while self.stream_state:
             ret, frame = cap.read()
             cv2.imshow('DJI Tello', frame)
+            # grab the current timestamp and use it to construct the filename
+            ts = datetime.datetime.now()
+            filename = "DC8{}.jpg".format(ts.strftime("%Y-%m-%d_%H-%M-%S"))
+
+            p = os.path.sep.join(("./img/", filename))
+
+            # save the file
+            cv2.imwrite(p, cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+            print("[INFO] saved {}".format(filename))
 
             # Video Stream is closed if escape key is pressed
             k = cv2.waitKey(1) & 0xFF

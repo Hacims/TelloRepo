@@ -9,10 +9,12 @@ __all__ = ['tello', 'stats']
 #from .stats import Stats
 #from easytello import tello
 import tello
+import time
 my_drone = tello.Tello()
 
 # Turning on stream
 my_drone.streamon()
+
 
 
 my_drone.takeoff()
