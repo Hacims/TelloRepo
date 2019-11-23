@@ -78,7 +78,8 @@ class Tello:
             p = os.path.sep.join(("./img/", filename))
 
             # save the file
-            cv2.imwrite(p, cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+#            cv2.imwrite(p, cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+            cv2.imwrite(p, frame)
             print("[INFO] saved {}".format(filename))
 
             # Video Stream is closed if escape key is pressed
