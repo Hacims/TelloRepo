@@ -12,7 +12,7 @@ import tello
 import time
 my_drone = tello.Tello()
 
-file_name = "commandDC8.txt"
+file_name = "command_0_DC8.txt"
 f = open(file_name, "r")
 commands = f.readlines()
 

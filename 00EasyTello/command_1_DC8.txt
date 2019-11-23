@@ -1,0 +1,4 @@
+command
+streamon
+delay 60
+streamoff

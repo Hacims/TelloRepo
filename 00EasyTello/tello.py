@@ -69,10 +69,12 @@ class Tello:
         cap = cv2.VideoCapture('udp://' + self.tello_ip + ':11111')
         # Runs while 'stream_state' is True
         while self.stream_state:
+            ts = datetime.datetime.now()
             ret, frame = cap.read()
+#            print("time stamp: ", ts, "  Return flag: ", ret)
             cv2.imshow('DJI Tello', frame)
             # grab the current timestamp and use it to construct the filename
-            ts = datetime.datetime.now()
+
             filename = "DC8{}.jpg".format(ts.strftime("%Y-%m-%d_%H-%M-%S"))
 
             p = os.path.sep.join(("./img/", filename))
