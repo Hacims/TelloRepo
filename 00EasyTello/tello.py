@@ -67,22 +67,33 @@ class Tello:
     def _video_thread(self):
         # Creating stream capture object
         cap = cv2.VideoCapture('udp://' + self.tello_ip + ':11111')
+
+        # how often to capture an image (in sec)
+        imageCapFreq = 2
+
+        prevcap = time.time()
+
         # Runs while 'stream_state' is True
         while self.stream_state:
             ts = datetime.datetime.now()
-            ret, frame = cap.read()
-#            print("time stamp: ", ts, "  Return flag: ", ret)
-            cv2.imshow('DJI Tello', frame)
-            # grab the current timestamp and use it to construct the filename
 
-            filename = "DC8{}.jpg".format(ts.strftime("%Y-%m-%d_%H-%M-%S"))
+            now = time.time()
+#            print ("now:  ", now)
+            if (now > prevcap + imageCapFreq):
+                prevcap = now
+                ret, frame = cap.read()
+                #            print("time stamp: ", ts, "  Return flag: ", ret)
+                cv2.imshow('DJI Tello', frame)
+                # grab the current timestamp and use it to construct the filename
 
-            p = os.path.sep.join(("./img/", filename))
+                filename = "DC8{}.jpg".format(ts.strftime("%Y-%m-%d_%H-%M-%S-%f"))
 
-            # save the file
-#            cv2.imwrite(p, cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
-            cv2.imwrite(p, frame)
-            print("[INFO] saved {}".format(filename))
+                p = os.path.sep.join(("./img/", filename))
+
+                # save the file
+                #            cv2.imwrite(p, cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+                cv2.imwrite(p, frame)
+                print("[INFO] saved {}".format(filename))
 
             # Video Stream is closed if escape key is pressed
             k = cv2.waitKey(1) & 0xFF

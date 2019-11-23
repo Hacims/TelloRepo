@@ -1,0 +1,11 @@
+import time
+
+print ("time.time: ", time.time())
+# while i < 10:
+#     i = i + 1
+#     now = int(round(time.time()))
+#     delta = 1.0 # in seconds
+#     dMilli = int(delta * 1000)
+#     future = now + dMilli
+#
+#     print ("now: ", now, "  future: ", future)

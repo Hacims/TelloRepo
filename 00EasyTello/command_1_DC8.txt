@@ -1,4 +1,4 @@
 command
 streamon
-delay 60
+delay 10
 streamoff
