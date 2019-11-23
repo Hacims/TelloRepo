@@ -3,25 +3,27 @@ delay 1
 streamon
 delay 1
 takeoff
-delay 5
-up 10
-delay 5
+delay 1
+up 20
+delay 1
+speed 10
+delay 1
 forward 100
-delay 5
+delay 1
 cw 90 
-delay 5
+delay 1
 forward 20
-delay 5
+delay 1
 cw 90
-delay 5
+delay 1
 forward 100
-delay 5
+delay 1
 cw 90
-delay 5
+delay 1
 forward 20
-delay 5
+delay 1
 cw 90
-delay 5
+delay 1
 land
-delay 5
+delay 1
 streamoff
