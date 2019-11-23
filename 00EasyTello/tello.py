@@ -68,7 +68,7 @@ class Tello:
         # Creating stream capture object
         cap = cv2.VideoCapture('udp://' + self.tello_ip + ':11111')
 
-        # how often to capture an image (in sec)
+        # how often to capture an image (in sec)(2 = every 2 seconds; .5 means twice/sec)
         imageCapFreq = 2
 
         prevcap = time.time()
@@ -76,19 +76,20 @@ class Tello:
         # Runs while 'stream_state' is True
         while self.stream_state:
             ts = datetime.datetime.now()
+            ret, frame = cap.read()
+            print("time stamp: ", ts, "  Return flag: ", ret)
+            cv2.imshow('DJI Tello', frame)
+            # grab the current timestamp and use it to construct the filename
+
+            filename = "DC8{}.jpg".format(ts.strftime("%Y-%m-%d_%H-%M-%S-%f"))
+
+            p = os.path.sep.join(("./img/", filename))
 
             now = time.time()
 #            print ("now:  ", now)
             if (now > prevcap + imageCapFreq):
                 prevcap = now
-                ret, frame = cap.read()
-                #            print("time stamp: ", ts, "  Return flag: ", ret)
-                cv2.imshow('DJI Tello', frame)
-                # grab the current timestamp and use it to construct the filename
 
-                filename = "DC8{}.jpg".format(ts.strftime("%Y-%m-%d_%H-%M-%S-%f"))
-
-                p = os.path.sep.join(("./img/", filename))
 
                 # save the file
                 #            cv2.imwrite(p, cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))

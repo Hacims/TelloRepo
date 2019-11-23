@@ -1,0 +1,45 @@
+command
+delay 1
+streamon
+delay 1
+takeoff
+delay 1
+up 20
+delay 1
+speed 10
+delay 1
+forward 100
+delay 1
+cw 30 
+delay 1
+cw 30 
+delay 1
+cw 30 
+delay 1
+forward 20
+delay 1
+cw 30 
+delay 1
+cw 30 
+delay 1
+cw 30 
+delay 1
+forward 100
+delay 1
+cw 30 
+delay 1
+cw 30 
+delay 1
+cw 30 
+delay 1
+forward 20
+delay 1
+cw 30 
+delay 1
+cw 30 
+delay 1
+cw 30 
+delay 1
+land
+delay 1
+streamoff
